@@ -1,0 +1,2 @@
+{"_id":{"$oid":"60af1fa038d2e53e202bee2d"},"id":"1","warnMsg":"PH过碱","name":"ph","num":9}
+{"_id":{"$oid":"60af200638d2e53e202bee2f"},"id":"1","warnMsg":"湿度过高","name":"humidity","num":31}

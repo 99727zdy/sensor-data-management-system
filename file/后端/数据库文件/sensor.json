@@ -1,0 +1,1 @@
+{"_id":{"$oid":"60af198f01134c383c3b83c5"},"sensor_id":"1","name":"test1_update","status":"update_1","power":80,"place":"update_place_1","temperature":0,"humidity":0,"light":0,"wind":0,"ph":0}
