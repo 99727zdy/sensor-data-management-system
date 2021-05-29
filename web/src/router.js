@@ -13,15 +13,15 @@ import Registered from "./views/Login/Registered.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    // { path: '/', redirect: '/login' },
+    { path: "/", redirect: "/login" },
     { path: "/login", component: Login },
     { path: "/registered", component: Registered },
     {
-      path: "/",
+      path: "/home",
       name: "home",
       component: Home,
       redirect: "/sensorList",
@@ -58,3 +58,14 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.path === "/login") return next();
+  const username = window.sessionStorage.getItem("username");
+  // console.log(to.path);
+  if (!username) return next("/login");
+  // 登录成功（已获取到username）
+  next();
+});
+
+export default router;

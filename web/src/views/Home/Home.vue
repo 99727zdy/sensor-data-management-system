@@ -75,6 +75,7 @@ export default {
         message: "退出成功",
         type: "success",
       });
+      sessionStorage.clear();
     },
   },
 };

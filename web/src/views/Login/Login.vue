@@ -18,7 +18,9 @@
           <el-button type="success" @click="submitForm('loginForm')"
             >登录</el-button
           >
-          <el-button type="primary" @click="registered('loginForm')">注册</el-button>
+          <el-button type="primary" @click="registered('loginForm')"
+            >注册</el-button
+          >
           <el-button @click="resetForm('loginForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -84,7 +86,8 @@ export default {
             type: "success",
           });
           let username = this.loginForm.username;
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/home" });
+          sessionStorage.setItem("username", username);
         } else {
           this.$message({
             message: "登录失败（" + res.data + ")",
