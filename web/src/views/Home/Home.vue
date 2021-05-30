@@ -48,6 +48,10 @@
                   <el-menu-item index="/warnLogs">报警日志</el-menu-item>
                   <el-menu-item index="/controlLogs">控制日志</el-menu-item>
                 </el-submenu>
+                <el-menu-item index="/VisualSensor">
+                  <i class="el-icon-data-line"></i>
+                  <span>可视化</span>
+                </el-menu-item>
                 <el-menu-item index="/UserManagement">
                   <i class="el-icon-user"></i>
                   <span>用户管理</span>

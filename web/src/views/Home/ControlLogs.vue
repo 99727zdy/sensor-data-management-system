@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="head">
-      <h1>控制日志</h1>
-      <p>显示所有操作记录</p>
+      <h1>控制日志（显示所有操作记录）</h1>
     </div>
     <el-table
       ref="conData"
       :data="conData"
       highlight-current-row
+      height="570"
       style="width: 642px; margin: 20px"
       border
     >
-      <el-table-column type="index" label="索引" width="120"> </el-table-column>
+      <el-table-column type="index" label="索引" width="120"></el-table-column>
       <el-table-column property="sensor_id" label="传感器id" width="120">
       </el-table-column>
       <el-table-column

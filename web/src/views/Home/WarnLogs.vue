@@ -1,16 +1,17 @@
 <template>
   <div>
     <div class="head">
-      <h1>报警日志</h1>
-      <p>显示所有报警日志</p>
+      <h1>报警日志（显示所有报警日志）</h1>
     </div>
     <el-table
       ref="singleTable"
       :data="warnData"
       highlight-current-row
-      style="width: 700px; margin: 20px"
+      height="570"
+      style="width: 900px; margin: 20px"
       border
     >
+      <el-table-column type="index" label="索引" width="120"></el-table-column>
       <el-table-column property="id" label="传感器id" width="120">
       </el-table-column>
       <el-table-column

@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^2.6.5",
+    "echarts": "^4.8.0",
     "element-ui": "^2.15.1",
     "vue": "^2.6.10",
     "vue-monoplasty-slide-verify": "^1.1.3",

@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div style="height:570px">
     <div class="head">
-      <h1>全部用户</h1>
-      <p>显示全部用户</p>
+      <h1>全部用户（显示全部用户）</h1>
     </div>
     <el-table :data="usersData" style="width: 100%">
-      <el-table-column type="index" width="100"> </el-table-column>sss
+      <el-table-column label="索引" type="index" width="100"></el-table-column>sss
       <el-table-column label="用户名" prop="username"> </el-table-column>
       <el-table-column label="用户权限">
         <template slot-scope="scope">

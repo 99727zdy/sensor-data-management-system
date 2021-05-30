@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="head">
-      <h1>添加传感器</h1>
-      <p>新增传感器</p>
+      <h1>添加传感器（新增传感器）</h1>
     </div>
     <el-form ref="sensorForm" :model="sensorForm" label-width="100px">
       <el-form-item label="传感器id">

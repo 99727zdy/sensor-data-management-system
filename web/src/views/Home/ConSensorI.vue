@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="head">
-      <h1>控制传感器强度</h1>
-      <p>控制传感器属性值的强度</p>
+      <h1>控制传感器强度（控制传感器属性值的强度）</h1>
     </div>
     <el-form ref="form" :model="conForm" label-width="80px">
       <el-form-item label="传感器ID">

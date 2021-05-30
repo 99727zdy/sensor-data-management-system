@@ -10,6 +10,7 @@ import ConSensorI from "./views/Home/ConSensorI.vue";
 import Login from "./views/Login/Login.vue";
 import UserManagement from "./views/Home/UserManagement.vue";
 import Registered from "./views/Login/Registered.vue";
+import VisualSensor from './views/Home/VisualSensor.vue'
 
 Vue.use(Router);
 
@@ -35,7 +36,7 @@ const router = new Router({
           component: AddSensor,
         },
         {
-          path: "controlSensor",
+          path: "/controlSensor",
           component: ControlSensor,
         },
         {
@@ -54,18 +55,22 @@ const router = new Router({
           path: "/UserManagement",
           component: UserManagement,
         },
+        {
+          path: "/VisualSensor",
+          component: VisualSensor,
+        },
       ],
     },
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.path === "/login") return next();
-  const username = window.sessionStorage.getItem("username");
-  // console.log(to.path);
-  if (!username) return next("/login");
-  // 登录成功（已获取到username）
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.path === "/login") return next();
+//   const username = window.sessionStorage.getItem("username");
+//   // console.log(to.path);
+//   if (!username) return next("/login");
+//   // 登录成功（已获取到username）
+//   next();
+// });
 
 export default router;

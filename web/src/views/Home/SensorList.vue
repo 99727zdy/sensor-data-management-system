@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div style="height:570px">
     <div class="head">
-      <h1>全部传感器</h1>
-      <p>显示全部传感器</p>
+      <h1>全部传感器（显示全部传感器）</h1>
     </div>
     <el-table :data="sensorData" style="width: 100%">
       <el-table-column type="expand">
@@ -41,10 +40,38 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column label="传感器id" prop="sensor_id"> </el-table-column>
-      <el-table-column label="传感器名称" prop="name"> </el-table-column>
-      <el-table-column label="放置地点" prop="place"> </el-table-column>
+      <el-table-column label="传感器id" prop="sensor_id"></el-table-column>
+      <el-table-column label="传感器名称" prop="name"></el-table-column>
+      <el-table-column label="放置地点" prop="place"></el-table-column>
+      <el-table-column label="传感器状态" prop="status"></el-table-column>
+      <el-table-column>
+        <template slot-scope="scope">
+          <el-button type="success" @click="editSensor(scope.row)"
+            >编辑</el-button
+          >
+        </template>
+      </el-table-column>
     </el-table>
+
+    <el-dialog title="编辑传感器" :visible.sync="dialogFormVisible">
+      <el-form :model="editForm">
+        <el-form-item label="传感器id" :label-width="formLabelWidth">
+          <el-input v-model="editForm.sensor_id" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="传感器名称" :label-width="formLabelWidth">
+          <el-input v-model="editForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="放置地点" :label-width="formLabelWidth">
+          <el-input v-model="editForm.place" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="传感器状态" :label-width="formLabelWidth">
+          <el-input v-model="editForm.status" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="complete">完成</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -52,6 +79,17 @@ export default {
   data() {
     return {
       sensorData: [],
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+
+      editForm: {
+        sensor_id: "",
+        name: "",
+        status: "",
+        place: "",
+      },
+
+      formLabelWidth: "120px",
     };
   },
   methods: {
@@ -60,6 +98,31 @@ export default {
       if (res.status == 200) {
         this.sensorData = res.data;
         // console.log(res);
+      }
+    },
+    //编辑传感器的4个属性
+    editSensor(row) {
+      this.dialogFormVisible = true;
+      // console.log(row);
+      this.editForm.sensor_id = row.sensor_id;
+      this.editForm.name = row.name;
+      this.editForm.status = row.status;
+      this.editForm.place = row.place;
+      // console.log(this.editForm);
+    },
+    //完成修改
+    async complete() {
+      const res = await this.$http.post("sensor/edit", this.editForm);
+      if (res.status == 200) {
+        //更新传感器信息
+        this.getSensor();
+        //关闭弹框
+        this.dialogFormVisible = false;
+        // console.log(res);
+        this.$message({
+          message: "编辑成功",
+          type: "success",
+        });
       }
     },
   },
