@@ -33,6 +33,7 @@ router.post("/find_control_logs", urlencodedParser, function (req, res) {
   });
 });
 
+//操作日志
 router.post("/find_control_logs_All", urlencodedParser, function (req, res) {
   //console.log("req: " + req.body.filecontrol_id+","+req.body.control_id+","+req.body.pwd);
   //res.send('post successfully!'+req.body);
@@ -53,6 +54,7 @@ router.post("/find_control_logs_All", urlencodedParser, function (req, res) {
   });
 });
 
+//控制某个属性强度
 router.post("/control", urlencodedParser, function (req, res) {
   console.log(
     "control_id: " +

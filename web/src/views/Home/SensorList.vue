@@ -100,6 +100,7 @@ export default {
         // console.log(res);
       }
     },
+    
     //编辑传感器的4个属性
     editSensor(row) {
       this.dialogFormVisible = true;

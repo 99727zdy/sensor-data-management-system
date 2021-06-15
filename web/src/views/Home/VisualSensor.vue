@@ -1,18 +1,68 @@
+/* eslint-disable no-console */
 <template>
-  <div id="myChart" :style="{ width: '300px', height: '300px' }"></div>
+  <div>
+    <el-select
+      v-model="sensorID"
+      placeholder="请选择传感器"
+      @change="getV(sensorID)"
+    >
+      <el-option
+        v-for="item in sensorData"
+        :key="item.id"
+        :label="item.name"
+        :value="item.sensor_id"
+      >
+      </el-option>
+    </el-select>
+    <div id="myChart" :style="{ width: '600px', height: '500px' }"></div>
+  </div>
 </template>
 <script>
 export default {
   name: "hello",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
+      sensorData: [],
+      sensorID: "",
+      echartV: [1, 2, 3, 4, 5, 6],
     };
   },
   mounted() {
     this.drawLine();
+    this.getSensor();
   },
   methods: {
+    async getSensor() {
+      const res = await this.$http.get("sensor/find");
+      if (res.status == 200) {
+        this.sensorData = res.data;
+        // eslint-disable-next-line no-console
+        // console.log(this.sensorData);
+      }
+    },
+    getV(id) {
+      // eslint-disable-next-line no-console
+      // console.log(id);
+    
+      for (let i = 0; i < this.sensorData.length; i++) {
+        if (this.sensorData[i].sensor_id == id) {
+          //清空数组
+          this.echartV.splice(0, this.echartV.length);
+          //添加数据
+          this.echartV.push(this.sensorData[i].humidity);
+          this.echartV.push(this.sensorData[i].light);
+          this.echartV.push(this.sensorData[i].ph);
+          this.echartV.push(this.sensorData[i].power);
+          this.echartV.push(this.sensorData[i].temperature);
+          this.echartV.push(this.sensorData[i].wind);
+          // eslint-disable-next-line no-console
+          // console.log(this.echartV);
+          // eslint-disable-next-line no-console
+          this.drawLine();
+        }
+      }
+    },
+
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("myChart"));
@@ -20,15 +70,25 @@ export default {
       myChart.setOption({
         title: { text: "在Vue中使用echarts" },
         tooltip: {},
-        xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+        grid: {
+          y2: 140,
         },
-        yAxis: {},
+        xAxis: {
+          type: "category",
+          data: ["humidity", "light", "ph", "power", "temperature", "wind"],
+          axisLabel: {
+            interval: 0,
+            rotate: -30,
+          },
+        },
+        yAxis: {
+          type: "value",
+        },
         series: [
           {
-            name: "销量",
+            name: "",
             type: "bar",
-            data: [5, 20, 36, 10, 10, 20],
+            data: this.echartV,
           },
         ],
       });
@@ -37,4 +97,8 @@ export default {
 };
 </script>
 <style  scoped>
+ul,
+li {
+  list-style: none;
+}
 </style>
