@@ -1,9 +1,24 @@
 <template>
   <div>
     <div class="head">
-      <h1>全部传感器（显示全部传感器）</h1>
+      <h1>控制模拟传感器节点（随机产生数据）</h1>
     </div>
-    <el-table :data="sensorData" style="width: 100%">
+    <el-select v-model="value" placeholder="请选择传感器id" @change="ChangeId(value)">
+      <el-option
+        v-for="item in sensorData"
+        :key="item.sensor_id"
+        :label="item.sensor_id"
+        :value="item.sensor_id"
+      >
+      </el-option>
+    </el-select>
+    <el-button type="primary" @click="getConSen">随机生成</el-button>
+    <el-table
+      :data="sensorData"
+      style="width: 100%"
+      height="500px"
+      class="mystyle"
+    >
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -56,6 +71,7 @@ export default {
         name: "",
         place: "",
       },
+      value: "",
     };
   },
   methods: {
@@ -63,26 +79,36 @@ export default {
       const res = await this.$http.get("sensor/find");
       if (res.status == 200) {
         this.sensorData = res.data;
+        // eslint-disable-next-line no-console
         // console.log(this.sensorData);
       }
     },
     async getConSen() {
-      const res = await this.$http.post("sensor/control?sensor_id=" + "1");
+      const res = await this.$http.get(
+        "sensor/control?sensor_id=" + window.sessionStorage.currentID
+      );
       // eslint-disable-next-line no-console
-      console.log(res);
       if (res.status == 200) {
         // eslint-disable-next-line no-console
-        console.log(res.data);
+        // console.log(res.data);
+        this.getSensor();
         this.$message({
-          message: res.data,
+          message: "随机生成成功",
           type: "success",
         });
       }
     },
+    ChangeId(id) {
+      window.sessionStorage.setItem("currentID", id);
+    },
   },
   mounted() {
-    // this.getSensor();
-    this.getConSen();
-  }
+    this.getSensor();
+  },
 };
 </script>
+<style>
+.mystyle {
+  margin-top: 10px;
+}
+</style>

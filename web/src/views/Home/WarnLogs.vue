@@ -7,7 +7,7 @@
       ref="singleTable"
       :data="warnData"
       highlight-current-row
-      height="570"
+      height="500"
       style="width: 900px; margin: 20px"
       border
     >

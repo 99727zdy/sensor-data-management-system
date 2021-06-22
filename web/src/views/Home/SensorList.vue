@@ -3,7 +3,7 @@
     <div class="head">
       <h1>全部传感器（显示全部传感器）</h1>
     </div>
-    <el-table :data="sensorData" style="width: 100%">
+    <el-table :data="sensorData" height="500" style="width: 100%">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -46,7 +46,7 @@
       <el-table-column label="传感器状态" prop="status"></el-table-column>
       <el-table-column>
         <template slot-scope="scope">
-          <el-button type="success" @click="editSensor(scope.row)"
+          <el-button type="primary" @click="editSensor(scope.row)"
             >编辑</el-button
           >
           <el-button type="danger" @click="deleteSensor(scope.row)"
@@ -116,7 +116,7 @@ export default {
     async deleteSensor(row) {
       // eslint-disable-next-line no-console
       console.log(row.sensor_id);
-      const res = await this.$http.get("sensor/delete?" + row.sensor_id);
+      const res = await this.$http.get("sensor/delete?sensor_id="+row.sensor_id);
       // eslint-disable-next-line no-console
       // console.log(res);
       if (res.status == 200) {
