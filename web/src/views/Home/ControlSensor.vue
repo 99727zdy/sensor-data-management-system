@@ -68,8 +68,10 @@ export default {
     },
     async getConSen() {
       const res = await this.$http.post("sensor/control?sensor_id=" + "1");
+      // eslint-disable-next-line no-console
       console.log(res);
       if (res.status == 200) {
+        // eslint-disable-next-line no-console
         console.log(res.data);
         this.$message({
           message: res.data,
@@ -81,6 +83,6 @@ export default {
   mounted() {
     // this.getSensor();
     this.getConSen();
-  },
+  }
 };
 </script>

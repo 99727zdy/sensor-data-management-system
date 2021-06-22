@@ -1,5 +1,5 @@
 <template>
-  <div style="height:570px">
+  <div style="height: 570px">
     <div class="head">
       <h1>全部传感器（显示全部传感器）</h1>
     </div>
@@ -49,6 +49,9 @@
           <el-button type="success" @click="editSensor(scope.row)"
             >编辑</el-button
           >
+          <el-button type="danger" @click="deleteSensor(scope.row)"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -81,14 +84,12 @@ export default {
       sensorData: [],
       dialogTableVisible: false,
       dialogFormVisible: false,
-
       editForm: {
         sensor_id: "",
         name: "",
         status: "",
         place: "",
       },
-
       formLabelWidth: "120px",
     };
   },
@@ -100,7 +101,7 @@ export default {
         // console.log(res);
       }
     },
-    
+
     //编辑传感器的4个属性
     editSensor(row) {
       this.dialogFormVisible = true;
@@ -110,6 +111,24 @@ export default {
       this.editForm.status = row.status;
       this.editForm.place = row.place;
       // console.log(this.editForm);
+    },
+    //删除传感器
+    async deleteSensor(row) {
+      // eslint-disable-next-line no-console
+      console.log(row.sensor_id);
+      const res = await this.$http.get("sensor/delete?" + row.sensor_id);
+      // eslint-disable-next-line no-console
+      // console.log(res);
+      if (res.status == 200) {
+        //更新传感器信息
+        this.getSensor();
+        this.$message({
+          message: "删除成功",
+          type: "success",
+        });
+      }
+      // eslint-disable-next-line no-console
+      console.log(this.sensorData)
     },
     //完成修改
     async complete() {
