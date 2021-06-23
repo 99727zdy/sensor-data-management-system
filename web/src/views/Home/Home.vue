@@ -27,19 +27,11 @@
                   </template>
                   <el-menu-item index="/sensorList">全部传感器</el-menu-item>
                   <el-menu-item index="/addSensor">添加传感器</el-menu-item>
-                  <el-menu-item index="/conSensorI"
+                  <el-menu-item index="/controlSensor"
                     >控制传感器强度</el-menu-item
                   >
-                  <el-menu-item index="/controlSensor">控制传感器</el-menu-item>
+                  <el-menu-item index="/simSensor">模拟传感器</el-menu-item>
                 </el-submenu>
-                <!-- <el-menu-item index="2">
-                  <i class="el-icon-menu"></i>
-                  <span slot="title">导航二</span>
-                </el-menu-item>
-                <el-menu-item index="4">
-                  <i class="el-icon-setting"></i>
-                  <span slot="title">导航四</span>
-                </el-menu-item> -->
                 <el-submenu index="4">
                   <template slot="title">
                     <i class="el-icon-tickets"></i>
@@ -101,5 +93,4 @@ export default {
   right: 30px;
   top: 10px;
 }
-
 </style>

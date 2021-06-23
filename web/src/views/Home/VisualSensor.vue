@@ -43,7 +43,7 @@ export default {
     getV(id) {
       // eslint-disable-next-line no-console
       // console.log(id);
-    
+
       for (let i = 0; i < this.sensorData.length; i++) {
         if (this.sensorData[i].sensor_id == id) {
           //清空数组
@@ -68,7 +68,7 @@ export default {
       let myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
       myChart.setOption({
-        title: { text: "在Vue中使用echarts" },
+        title: { text: "传感器数据可视化" },
         tooltip: {},
         grid: {
           y2: 140,
@@ -86,6 +86,21 @@ export default {
         },
         series: [
           {
+            itemStyle: {
+              normal: {
+                color: function (params) {
+                  var colorList = [
+                    "#4962FC",
+                    "#4B7CF3",
+                    "#4962FC",
+                    "#4B7CF3",
+                    "#4962FC",
+                    "#4B7CF3",
+                  ];
+                  return colorList[params.dataIndex];
+                },
+              },
+            },
             name: "",
             type: "bar",
             data: this.echartV,
