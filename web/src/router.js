@@ -10,12 +10,13 @@ import ControlSensor from "./views/Home/ControlSensor.vue";
 import Login from "./views/Login/Login.vue";
 import UserManagement from "./views/Home/UserManagement.vue";
 import Registered from "./views/Login/Registered.vue";
-import VisualSensor from './views/Home/VisualSensor.vue'
+import VisualSensor from "./views/Home/VisualSensor.vue";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
+  // mode: "hash",
   base: process.env.BASE_URL,
   routes: [
     { path: "/", redirect: "/login" },

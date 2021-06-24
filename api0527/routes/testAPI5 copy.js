@@ -946,6 +946,7 @@ router.get("/sensor/delete", function (req, res) {
 });
 
 //登录
+// @validate('')
 router.post("/login", function (req, res) {
   let { username, password } = req.body;
   password = crypto.createHmac("md5", "cyl").update(password).digest("hex");

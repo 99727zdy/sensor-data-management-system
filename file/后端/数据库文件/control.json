@@ -1,5 +1,0 @@
-{"_id":{"$oid":"60af198f01134c383c3b83c6"},"sensor_id":"1","control_id":"0","intensity":"22"}
-{"_id":{"$oid":"60af198f01134c383c3b83c7"},"sensor_id":"1","control_id":"1","intensity":"22"}
-{"_id":{"$oid":"60af198f01134c383c3b83c8"},"sensor_id":"1","control_id":"2","intensity":"0"}
-{"_id":{"$oid":"60af198f01134c383c3b83c9"},"sensor_id":"1","control_id":"3","intensity":"22"}
-{"_id":{"$oid":"60af198f01134c383c3b83ca"},"sensor_id":"1","control_id":"4","intensity":"0"}

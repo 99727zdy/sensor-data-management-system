@@ -14,9 +14,9 @@
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model="RegForm.password"></el-input>
         </el-form-item>
-        <el-form-item label="权限等级" prop="level">
+        <!-- <el-form-item label="权限等级" prop="level">
           <el-input v-model.number="RegForm.level"></el-input>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="registered('RegForm')"
             >注册</el-button
@@ -74,7 +74,7 @@ export default {
           const res = await this.$http.post("register", this.RegForm);
           if (res.status == 200) {
             this.$message({
-              message: res.data,
+              message: "注册成功",
               type: "success",
             });
             this.$router.push({ path: "/Login" });

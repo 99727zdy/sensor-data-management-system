@@ -80,6 +80,7 @@ export default {
       // this.submitForm("loginForm");
       const res = await this.$http.post("login", this.loginForm);
       if (res.status == 200) {
+        // console.log(res)
         if (res.data == "ok") {
           this.$message({
             message: "登录成功",

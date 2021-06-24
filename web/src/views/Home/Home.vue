@@ -44,10 +44,10 @@
                   <i class="el-icon-data-line"></i>
                   <span>可视化</span>
                 </el-menu-item>
-                <el-menu-item index="/UserManagement">
+                <!-- <el-menu-item index="/UserManagement">
                   <i class="el-icon-user"></i>
                   <span>用户管理</span>
-                </el-menu-item>
+                </el-menu-item> -->
               </el-menu>
             </el-col>
           </el-row>
