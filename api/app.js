@@ -7,7 +7,7 @@ var cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var COPY = require("./routes/testAPI5 copy");
+var COPY = require("./routes/main");
 
 
 
