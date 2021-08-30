@@ -1043,6 +1043,7 @@ router.get("/sensor/edit", function (req, res) {
   });
 });
 
+
 router.post("/sensor/edit", function (req, res) {
   let { sensor_id, name, status, place } = req.body;
   var mysensor = { $set: { name: name, status: status, place: place } };

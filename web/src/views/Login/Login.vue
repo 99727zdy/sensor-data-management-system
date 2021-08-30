@@ -87,8 +87,8 @@ export default {
             type: "success",
           });
           let username = this.loginForm.username;
-          this.$router.push({ path: "/home" });
           sessionStorage.setItem("username", username);
+          this.$router.push({ path: "/home" });
         } else {
           this.$message({
             message: "登录失败（" + res.data + ")",
@@ -129,4 +129,3 @@ body {
 
  
 
-··
